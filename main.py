@@ -24,7 +24,7 @@ def about():
     return render_template("about.html")
 
 
-@app.route('/create', method=["POST", "GET"])
+@app.route('/create', methods=["POST", "GET"])
 def create():
     if request.method == "POST":
         title = request.form['title']
@@ -42,5 +42,5 @@ def create():
         return render_template("create.html")
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     app.run(debug=True)
