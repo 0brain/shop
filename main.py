@@ -39,8 +39,14 @@ def create():
     if request.method == "POST":
         title = request.form['title']
         price = request.form['price']
+        length = request.form['length']
+        width = request.form['width']
+        thickness1 = request.form['thickness1']
+        thickness2 = request.form['thickness2']
+        quantity = request.form['quantity']
 
-        item = Item(title=title, price=price)
+        item = Item(title=title, price=price, length=length, width=width,
+                    thickness1=thickness1, thickness2=thickness2, quantity=quantity)
         try: # зберігаю item як новий запис в БД
             db.session.add(item)
             db.session.commit()
