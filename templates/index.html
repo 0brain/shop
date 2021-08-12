@@ -24,10 +24,10 @@
             <img src="static/3.jpeg" width="250" height="250" alt="Письма мастера дзен" class="center-img">
             <h1 class="card-title pricing-card-title">₴{{ el.price }}<small class="text-muted fw-light">/m²</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li>Довжина: 290 мм.</li>
-              <li>Ширина: 120 мм.</li>
-              <li>Товщина: 20-25 мм.</li>
-              <li>Кількість в 1 м²: 30 шт.</li>
+              <li>Довжина: {{ el.length }} мм.</li>
+              <li>Ширина: {{ el.width }} мм.</li>
+              <li>Товщина: {{ el.thickness1 }}-{{ el.thickness2 }} мм.</li>
+              <li>Кількість в 1 м²: {{ el.quantity }} шт.</li>
             </ul>
             <button type="button" class="w-100 btn btn-lg btn-outline-primary">Обрати</button>
           </div>

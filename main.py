@@ -10,7 +10,13 @@ db = SQLAlchemy(app)
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
-    price = db.Column(db.Integer,nullable=False)
+    price = db.Column(db.Integer, nullable=False)
+    length = db.Column(db.String(100), nullable=False)
+    width = db.Column(db.String(100), nullable=False)
+    thickness1 = db.Column(db.String(100), nullable=False)
+    thickness2 = db.Column(db.String(100), nullable=False)
+    quantity = db.Column(db.String(100), nullable=False)
+
     isActive = db.Column(db.Boolean, default=True)
     # text = db.Column(db.Text, nullable=False)
 
