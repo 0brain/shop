@@ -38,12 +38,14 @@ def about():
 
 @app.route('/buy/<int:id>')
 def item_buy(id):
+    item=Item.query.get(id) #по id вибираю запис з таблиці і передаю в словник data значення поля "ціна"
+
     api = Api(merchant_id=,
               secret_key='test')
     checkout = Checkout(api=api)
     data = {
-        "currency": "USD",
-        "amount": 10000
+        "currency": "UAH",
+        "amount": item.price
     }
     url = checkout.url(data).get('checkout_url')
     return id
