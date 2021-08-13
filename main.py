@@ -36,6 +36,19 @@ def about():
     return render_template("about.html")
 
 
+@app.route('/buy/<int:id>')
+def item_buy(id):
+    api = Api(merchant_id=,
+              secret_key='test')
+    checkout = Checkout(api=api)
+    data = {
+        "currency": "USD",
+        "amount": 10000
+    }
+    url = checkout.url(data).get('checkout_url')
+    return id
+
+
 @app.route('/create', methods=["POST", "GET"])
 def create():
     if request.method == "POST":
