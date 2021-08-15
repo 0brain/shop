@@ -21,7 +21,7 @@
             <h4 class="my-0 fw-normal">{{ el.title }}</h4>
           </div>
           <div class="card-body">
-            <img src="static/3.jpeg" width="250" height="250" alt="Письма мастера дзен" class="center-img">
+            <img src="data:image/JPEG;charset=ascii;base64,{{ el.rendered_data }}" width="250" height="250" alt="Письма мастера дзен" class="center-img">
             <h1 class="card-title pricing-card-title">₴{{ el.price }}<small class="text-muted fw-light">/m²</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
               <li>Довжина: {{ el.length }} мм.</li>
