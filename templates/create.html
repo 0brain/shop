@@ -7,7 +7,7 @@
 {% block body %}
 <div class="container">
     <h1>Додавання товару</h1>
-    <form method="post">
+    <form method="post" action="/create" enctype="multipart/form-data">
         Назва: <input type="text" class="form-control" name="title" id="title" placeholder="Введіть назву"><br><br>
         Ціна: <input type="number" class="form-control" name="price" id="price" placeholder="Введіть ціну"><br><br>
         Довжина: <input type="number" class="form-control" name="length" id="length" placeholder="Введіть довжину плитки"><br><br>
@@ -15,6 +15,7 @@
         Товщина: від <input type="number" class="form-control" name="thickness1" id="thickness1" placeholder="Введіть товщину плитки">
          до <input type="number" class="form-control" name="thickness2" id="thickness2" placeholder="Введіть товщину плитки"><br><br>
         Кількість: <input type="number" class="form-control" name="quantity" id="quantity" placeholder="Введіть кількість"><br><br>
+        Зображення: <input type="file" name="inputFile"><br><br>
 
 
 
