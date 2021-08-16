@@ -9,11 +9,14 @@ from base64 import b64encode
 import base64
 from io import BytesIO
 
+from admin.admin import admin
+
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///shop.db'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config['SECRET_KEY'] = 'dev'
 db = SQLAlchemy(app)
+app.register_blueprint(admin, url_prefix="/admin")
 
 
 class Item(db.Model):
