@@ -15,6 +15,10 @@ def logout_admin():
     session.pop('admin_logged', None)
 
 
+menu = [{'url': '.index', 'title': 'Панель'},
+        {'url': '.logout', 'title': 'Выйти'}]
+
+
 @admin.route("/")
 def index():
     if not isLogged():
