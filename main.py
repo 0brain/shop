@@ -40,7 +40,7 @@ class Item(db.Model):
 
 @app.route('/')
 def index():
-    items=Item.query.order_by(Item.price).all()  #будемо отримувати всі товари з таблиці Item і виводити в index.html
+    items=Item.query.order_by(Item.id).all()  #будемо отримувати всі товари з таблиці Item і виводити в index.html
     return render_template("index.html", data=items)
 
 

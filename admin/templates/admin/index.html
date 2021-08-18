@@ -2,4 +2,32 @@
 
 {% block content %}
 {{ super() }}
+
+<table>
+<tr>
+  <th>Зображення</th>
+  <th>Найменування</th>
+  <th>Ціна</th>
+  <th>Довжина</th>
+  <th>Ширина</th>
+  <th>Товщина</th>
+  <th>Кількість в 1м²</th>
+    <th>Дія</th>
+</tr>
+</table>
+{% for el in data %}
+<table>
+<tr>
+    <td><img src="data:image/JPEG;charset=ascii;base64,{{ el.rendered_data }}" width="125" height="125" alt="Зображення плитки {{ id }}" class="center-img"></td>
+    <td>{{ el.title }}</td>
+    <td>{{ el.price }} грн.</td>
+    <td>{{ el.length }} мм.</td>
+    <td>{{ el.width }} мм.</td>
+    <td>{{ el.thickness1 }}-{{ el.thickness2 }} мм.</td>
+    <td>{{ el.quantity }} шт.</td>
+
+    <td><a href="#" type="button" class="myButton_ORANGE">Редагувати</a><p><a href="#" type="button" class="myButton_RED">Видалити</a></td>
+</tr>
+</table>
+{% endfor %}
 {% endblock %}

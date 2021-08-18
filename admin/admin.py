@@ -29,7 +29,8 @@ menu = [{'url': 'index', 'title': 'Магазин'},
 def index():
     if not isLogged():
         return redirect(url_for('.login'))
-    return render_template('admin/index.html', menu=menu, title='Адмін-панель')
+    items = Item.query.order_by(Item.id).all()
+    return render_template('admin/index.html', menu=menu, data=items, title='Адмін-панель')
 
 
 @admin.route('/login', methods=["POST", "GET"])
