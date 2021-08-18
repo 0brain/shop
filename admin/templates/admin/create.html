@@ -1,13 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'admin/base_admin.html' %}
 
-{% block title %}
-<title>Додавання товару</title>
-{% endblock %}
+{% block content %}
+{{ super() }}
 
-{% block body %}
-<div class="container">
     <h1>Додавання товару</h1>
-    <form method="post" action="/create" enctype="multipart/form-data">
+    <form method="post" action="" enctype="multipart/form-data">
         Назва: <input type="text" class="form-control" name="title" id="title" placeholder="Введіть назву"><br><br>
         Ціна: <input type="number" class="form-control" name="price" id="price" placeholder="Введіть ціну"><br><br>
         Довжина: <input type="number" class="form-control" name="length" id="length" placeholder="Введіть довжину плитки"><br><br>
@@ -23,5 +20,5 @@
 
         <button class="btn btn-outline-primary" type="submit">Добавити товар</button>
     </form>
-</div>
+
 {% endblock %}

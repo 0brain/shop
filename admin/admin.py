@@ -2,6 +2,8 @@ from flask import Blueprint, request, redirect, url_for, flash, render_template,
 
 admin = Blueprint("admin", __name__, template_folder="templates", static_folder="static")
 
+from main import Item, db, render_picture
+
 
 def login_admin():
     session['admin_logged'] = 1  # функція створює запис в сесії 'admin_logged'. Дальше припускаю якщо такий запис існує, то адміністратор залогінений.
@@ -15,8 +17,12 @@ def logout_admin():
     session.pop('admin_logged', None)
 
 
-menu = [{'url': '.index', 'title': 'Панель'},
-        {'url': '.logout', 'title': 'Выйти'}]
+menu = [{'url': 'index', 'title': 'Магазин'},
+        {'url': '.index', 'title': 'Панель'},
+        {'url': '.create', 'title': 'Додати новий товар'},
+        {'url': '.logout', 'title': 'Вийти'}
+
+        ]
 
 
 @admin.route("/")
@@ -48,3 +54,31 @@ def logout():
     logout_admin()
 
     return redirect(url_for('.login'))
+
+
+@admin.route('/create', methods=["POST", "GET"])
+def create():
+    if request.method == "POST":
+        title = request.form['title']
+        price = request.form['price']
+        length = request.form['length']
+        width = request.form['width']
+        thickness1 = request.form['thickness1']
+        thickness2 = request.form['thickness2']
+        quantity = request.form['quantity']
+        file = request.files['inputFile']
+        data = file.read()
+        render_file = render_picture(data)
+
+        item = Item(title=title, price=price, length=length, width=width,
+                    thickness1=thickness1, thickness2=thickness2, quantity=quantity,
+                    data=data, rendered_data=render_file)
+        try: # зберігаю item як новий запис в БД
+            db.session.add(item)
+            db.session.commit()
+            return redirect('/')
+        except:
+            return "Виникла помилка"
+
+    else:
+        return render_template("admin/create.html", title='Додати товар', menu=menu)
