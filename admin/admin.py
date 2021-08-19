@@ -83,3 +83,32 @@ def create():
 
     else:
         return render_template("admin/create.html", title='Додати товар', menu=menu)
+
+
+@admin.route('/update/<int:id>', methods=["POST", "GET"])
+def update(id):
+    item_to_update = Item.query.get_or_404(id)
+    if request.method == "POST":
+        item_to_update.title = request.form['title']
+        item_to_update.price = request.form['price']
+        item_to_update.length = request.form['length']
+        item_to_update.width = request.form['width']
+        item_to_update.thickness1 = request.form['thickness1']
+        item_to_update.thickness2 = request.form['thickness2']
+        item_to_update.quantity = request.form['quantity']
+        item_to_update.file = request.files['inputFile']
+        item_to_update.data = file.read()
+        item_to_update.render_file = render_picture(item_to_update.data)
+
+        items_to_update = Item(title=item_to_update.title, price=item_to_update.price, length=item_to_update.length, width=item_to_update.width,
+                    thickness1=item_to_update.thickness1, thickness2=item_to_update.thickness2, quantity=item_to_update.quantity,
+                    data=item_to_update.data, rendered_data=item_to_update.render_file)
+        try: # зберігаю item як новий запис в БД
+            db.session.add(item_to_update)
+            db.session.commit()
+            return redirect('/')
+        except:
+            return "Виникла помилка"
+
+    else:
+        return render_template("admin/update.html", title='Редагувати товар', item_to_update=item_to_update)
