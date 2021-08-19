@@ -4,21 +4,21 @@
 {{ super() }}
 
     <h1>Редагування товару</h1>
-    <form method="post" action="/update/{{ item_to_update.id }}" enctype="multipart/form-data">
+    <form method="post" action="/admin/update/{{ item_to_update.id }}" enctype="multipart/form-data">
         Назва: <input type="text" class="form-control" name="title" id="title" placeholder="Введіть назву" value="{{ item_to_update.title }}"><br><br>
         Ціна: <input type="number" class="form-control" name="price" id="price" placeholder="Введіть ціну"  value="{{ item_to_update.price }}"><br><br>
-        Довжина: <input type="number" class="form-control" name="length" id="length" placeholder="Введіть довжину плитки"><br><br>
-        Ширина: <input type="number" class="form-control" name="width" id="width" placeholder="Введіть ширину плитки"><br><br>
-        Товщина: від <input type="number" class="form-control" name="thickness1" id="thickness1" placeholder="Введіть товщину плитки">
-         до <input type="number" class="form-control" name="thickness2" id="thickness2" placeholder="Введіть товщину плитки"><br><br>
-        Кількість: <input type="number" class="form-control" name="quantity" id="quantity" placeholder="Введіть кількість"><br><br>
-        Зображення: <input type="file" name="inputFile"><br><br>
+        Довжина: <input type="number" class="form-control" name="length" id="length" placeholder="Введіть довжину плитки"  value="{{ item_to_update.length }}"><br><br>
+        Ширина: <input type="number" class="form-control" name="width" id="width" placeholder="Введіть ширину плитки" value="{{ item_to_update.width }}"><br><br>
+        Товщина: від <input type="number" class="form-control" name="thickness1" id="thickness1" placeholder="Введіть товщину плитки" value="{{ item_to_update.thickness1 }}">
+         до <input type="number" class="form-control" name="thickness2" id="thickness2" placeholder="Введіть товщину плитки" value="{{ item_to_update.thickness2 }}"><br><br>
+        Кількість: <input type="number" class="form-control" name="quantity" id="quantity" placeholder="Введіть кількість" value="{{ item_to_update.quantity }}"><br><br>
+        Зображення: <input type="file" name="inputFile" value="{{ item_to_update.file }}"><br><br>
 
 
 
 
 
-        <button class="btn btn-outline-primary" type="submit">Добавити товар</button>
+        <button class="btn btn-outline-primary" type="submit">Редагувати товар</button>
     </form>
 
 {% endblock %}
