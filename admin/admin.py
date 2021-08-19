@@ -100,7 +100,7 @@ def update(id):
         item_to_update.data = file.read()
         item_to_update.render_file = render_picture(item_to_update.data)
 
-        items_to_update = Item(title=item_to_update.title, price=item_to_update.price, length=item_to_update.length, width=item_to_update.width,
+        item_to_update = Item(title=item_to_update.title, price=item_to_update.price, length=item_to_update.length, width=item_to_update.width,
                     thickness1=item_to_update.thickness1, thickness2=item_to_update.thickness2, quantity=item_to_update.quantity,
                     data=item_to_update.data, rendered_data=item_to_update.render_file)
         try: # зберігаю item як новий запис в БД

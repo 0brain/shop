@@ -1,0 +1,24 @@
+{% extends 'admin/base_admin.html' %}
+
+{% block content %}
+{{ super() }}
+
+    <h1>Редагування товару</h1>
+    <form method="post" action="/update/{{ item_to_update.id }}" enctype="multipart/form-data">
+        Назва: <input type="text" class="form-control" name="title" id="title" placeholder="Введіть назву" value="{{ item_to_update.title }}"><br><br>
+        Ціна: <input type="number" class="form-control" name="price" id="price" placeholder="Введіть ціну"  value="{{ item_to_update.price }}"><br><br>
+        Довжина: <input type="number" class="form-control" name="length" id="length" placeholder="Введіть довжину плитки"><br><br>
+        Ширина: <input type="number" class="form-control" name="width" id="width" placeholder="Введіть ширину плитки"><br><br>
+        Товщина: від <input type="number" class="form-control" name="thickness1" id="thickness1" placeholder="Введіть товщину плитки">
+         до <input type="number" class="form-control" name="thickness2" id="thickness2" placeholder="Введіть товщину плитки"><br><br>
+        Кількість: <input type="number" class="form-control" name="quantity" id="quantity" placeholder="Введіть кількість"><br><br>
+        Зображення: <input type="file" name="inputFile"><br><br>
+
+
+
+
+
+        <button class="btn btn-outline-primary" type="submit">Добавити товар</button>
+    </form>
+
+{% endblock %}

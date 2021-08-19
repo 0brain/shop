@@ -26,7 +26,7 @@
     <td>{{ el.thickness1 }}-{{ el.thickness2 }} мм.</td>
     <td>{{ el.quantity }} шт.</td>
 
-    <td><a href="#" type="button" class="myButton_ORANGE">Редагувати</a><p><a href="#" type="button" class="myButton_RED">Видалити</a></td>
+    <td><a href="/update/{{ item_to_update.id }}" type="button" class="myButton_ORANGE">Редагувати</a><p><a href="#" type="button" class="myButton_RED">Видалити</a></td>
 </tr>
 </table>
 {% endfor %}
