@@ -111,3 +111,12 @@ def update(id):
     else:
         return render_template("/admin/update.html", title='Редагувати товар', item_to_update=item_to_update)
 
+
+@admin.route('/delete/<int:id>', methods=["POST", "GET"])
+def delete(id):
+    item_to_delete = Item.query.get_or_404(id)
+    db.session.delete(item_to_delete)
+    db.session.commit()
+    flash("Видалено")
+
+    return redirect('/admin')
