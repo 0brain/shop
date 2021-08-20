@@ -96,9 +96,10 @@ def update(id):
         item_to_update.thickness1 = request.form['thickness1']
         item_to_update.thickness2 = request.form['thickness2']
         item_to_update.quantity = request.form['quantity']
-        item_to_update.file = request.files['inputFile']
-        item_to_update.data = item_to_update.file.read()
-        item_to_update.render_file = render_picture(item_to_update.data)
+        file = request.files['inputFile']
+        item_to_update.data = file.read() or item_to_update.data
+        item_to_update.rendered_data = render_picture(item_to_update.data)
+
 
 
         try: # зберігаю item як новий запис в БД
@@ -109,3 +110,4 @@ def update(id):
 
     else:
         return render_template("/admin/update.html", title='Редагувати товар', item_to_update=item_to_update)
+
